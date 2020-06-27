@@ -25,20 +25,24 @@ public class Question1 {
         bt.add(5, 2);
         bt.add(6, 3);
         bt.add(10, 3);
+        
+        int pre = 6;
+        int in = 4;
+        int post = 2;
         bt.preOrder();
-        System.out.println("Checks the next number after 3 in PreOrder:");
-        System.out.println(bt.preOrderNext(3));
+        System.out.println("Checks the next number after " + pre + " in PreOrder:");
+        System.out.println(bt.preOrderNext(pre));
         
         System.out.println("");
         bt.inOrder();
-        System.out.println("Checks the next number after 3 in InOrder:");
-        System.out.println(bt.inOrderNext(3));
+        System.out.println("Checks the next number after "+ in + " in InOrder:");
+        System.out.println(bt.inOrderNext(in));
         
         
         System.out.println("");
         bt.postOrder();
-        System.out.println("Checks the next number after 3 in PostOrder:");
-        System.out.println(bt.postOrderNext(10));
+        System.out.println("Checks the next number after " + post + " in PostOrder:");
+        System.out.println(bt.postOrderNext(post));
 
     }
     

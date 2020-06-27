@@ -154,53 +154,60 @@ public class BT<E> {
         if (element == null) {
             return null;
         }
-        Stack<NodeBT<E>> openList = new Stack<>();
+        LinkedList<NodeBT<E>> l = new LinkedList<>();
+        preOrderNext(root, l);
+        NodeBT<E> n = SearchNode(element);
+        boolean nextNode = false;
+        for (NodeBT<E> node : l) {
+            if (nextNode == true) {
+                nextNode = false;
+                return node;
 
-        openList.push(root);
-        //push root to stack
-        while (openList.empty() == false) {
-            NodeBT<E> curr = openList.pop();
-            //sets the current node so we can work with the others
-            if (curr.getRight() != null) {
-                openList.push(curr.getRight());
+            }
+            if (node == n) {
+                nextNode = true;
             }
 
-            if (curr.getLeft() != null) {
-                openList.push(curr.getLeft());
-            }
-
-            if (curr.equals(SearchNode(element, root)) && openList.empty() == false) {
-                return openList.pop();
-            }
-            //checks the conditions in PreOrder
         }
         return null;
+    }
+
+    private void preOrderNext(NodeBT<E> node, LinkedList<NodeBT<E>> l) {
+        if (node != null) {
+            l.add(node);
+            preOrderNext(node.getLeft(), l);
+            preOrderNext(node.getRight(), l);
+        }
     }
 
     public NodeBT<E> inOrderNext(E element) {
         if (element == null) {
             return null;
         }
-        Stack<NodeBT<E>> openList = new Stack<>();
+        LinkedList<NodeBT<E>> l = new LinkedList<>();
+        inOrderNext(root, l);
+        NodeBT<E> n = SearchNode(element);
+        boolean nextNode = false;
+        for (NodeBT<E> node : l) {
+            if (nextNode == true) {
+                nextNode = false;
+                return node;
 
-        openList.push(root);
-        //push root to stack
-        while (openList.empty() == false) {
-            NodeBT<E> curr = openList.pop();
-            //sets the current node so we can work with the others
-            if (curr.getRight() != null) {
-                openList.push(curr.getRight());
             }
-            if (curr.equals(SearchNode(element, root)) && openList.empty() == false) {
-                return openList.pop();
+            if (node == n) {
+                nextNode = true;
             }
-            if (curr.getLeft() != null) {
-                openList.push(curr.getLeft());
-            }
-            //checks the conditions in InOrder
 
         }
         return null;
+    }
+
+    private void inOrderNext(NodeBT<E> node, LinkedList<NodeBT<E>> l) {
+        if (node != null) {
+            inOrderNext(node.getLeft(),l);
+            l.add(node);
+            inOrderNext(node.getRight(),l);
+        }
     }
 
     public NodeBT<E> postOrderNext(E element) {
