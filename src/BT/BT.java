@@ -157,10 +157,10 @@ public class BT<E> {
         Stack<NodeBT<E>> openList = new Stack<>();
 
         openList.push(root);
-
+        //push root to stack
         while (openList.empty() == false) {
             NodeBT<E> curr = openList.pop();
-
+            //sets the current node so we can work with the others
             if (curr.getRight() != null) {
                 openList.push(curr.getRight());
             }
@@ -172,6 +172,7 @@ public class BT<E> {
             if (curr.equals(SearchNode(element, root)) && openList.empty() == false) {
                 return openList.pop();
             }
+            //checks the conditions in PreOrder
         }
         return null;
     }
@@ -183,10 +184,10 @@ public class BT<E> {
         Stack<NodeBT<E>> openList = new Stack<>();
 
         openList.push(root);
-
+        //push root to stack
         while (openList.empty() == false) {
             NodeBT<E> curr = openList.pop();
-
+            //sets the current node so we can work with the others
             if (curr.getRight() != null) {
                 openList.push(curr.getRight());
             }
@@ -196,6 +197,7 @@ public class BT<E> {
             if (curr.getLeft() != null) {
                 openList.push(curr.getLeft());
             }
+            //checks the conditions in InOrder
 
         }
         return null;

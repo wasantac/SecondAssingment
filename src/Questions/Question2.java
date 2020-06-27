@@ -22,7 +22,7 @@ public class Question2 {
         bt.add(30, 40);
         bt.add(45, 40);
 
- 
+        System.out.println("Checks if the Tree is a SearchBinaryTree");
         System.out.println(bt.testBST());
     }
     

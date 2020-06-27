@@ -24,9 +24,12 @@ public class LabeledBT<E> extends BT<E> {
             n.setPreOrder(count);
             count++;
         }
+        
+        //sets the index of preOrder
     }
 
     private void preOrderNumber(NodeBT<E> node, LinkedList<NodeBT<E>> l) {
+        //checks the tree in preOrder and adds element to the list
         if (node != null) {
             if (!l.contains(node)) {
                 l.add(node);
@@ -45,9 +48,11 @@ public class LabeledBT<E> extends BT<E> {
             n.setInOrder(count);
             count++;
         }
+        //sets the index of inOrder
     }
 
     private void inOrderNumber(NodeBT<E> node, LinkedList<NodeBT<E>> l) {
+        //checks the tree in inOrder and adds element to the list
         if (node != null) {
             inOrderNumber(node.getLeft(), l);
             l.add(node);
@@ -65,9 +70,11 @@ public class LabeledBT<E> extends BT<E> {
             n.setPostOrder(count);
             count++;
         }
+        //sets the index of postOrder
     }
 
     private void postOrderNumber(NodeBT<E> node, LinkedList<NodeBT<E>> l) {
+        //checks the tree in postOrder and adds element to the list
         if (node != null) {
             postOrderNumber(node.getLeft(), l);
             postOrderNumber(node.getRight(), l);

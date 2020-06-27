@@ -160,13 +160,10 @@ public class BinaryTree<E> {
 
     private boolean testBST(NodeBT<E> node,int min,int max) {
         if(node == null) return true;
-        /* false if this node violates the min/max constraints */
         if ((Integer)node.getData() < min || (Integer)node.getData() > max) 
             return false; 
-  
-        /* otherwise check the subtrees recursively 
-        tightening the min/max constraints */
-        // Allow only distinct values 
+ 
         return (testBST(node.getLeft(), min, (Integer)node.getData() - 1) &&  testBST(node.getRight(), (Integer)node.getData()+1, max)); 
+        //checks recursively so the left part is always less than the right part of the tree
     }
 }

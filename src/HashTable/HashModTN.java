@@ -30,6 +30,7 @@ public class HashModTN {
         } catch (NullPointerException ex) {
 
         }
+        //inserts in position k mod 13
     }
 
     public boolean remove(int i) {
@@ -45,10 +46,13 @@ public class HashModTN {
         } catch (NullPointerException ex) {
             return false;
         }
+        
+        //removes in position k mod 13
     }
 
     public void clear() {
         arr = new int[this.capacity];
+        //clears array
     }
 
     public boolean contains(int i) {
@@ -58,6 +62,8 @@ public class HashModTN {
         }catch(NullPointerException ex){
             return false;
         }
+        
+        //checks if it contains the number
     }
 
 
@@ -69,6 +75,8 @@ public class HashModTN {
         }catch(NullPointerException ex){
             return 0;
         }
+        
+        //gets the number at k mod 13
     }
 
     private void addCapacity() {
@@ -78,6 +86,7 @@ public class HashModTN {
         }
         arr = tmp;
         capacity = (capacity * 2) / 3;
+        //adds more space with shallow copy
     }
 
     public boolean isEmpty() {

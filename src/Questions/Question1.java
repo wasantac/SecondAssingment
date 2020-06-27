@@ -26,18 +26,18 @@ public class Question1 {
         bt.add(6, 3);
         bt.add(10, 3);
         bt.preOrder();
-        System.out.println("");
+        System.out.println("Checks the next number after 3 in PreOrder:");
         System.out.println(bt.preOrderNext(3));
         
         System.out.println("");
         bt.inOrder();
-        System.out.println("");
+        System.out.println("Checks the next number after 3 in InOrder:");
         System.out.println(bt.inOrderNext(3));
         
         
         System.out.println("");
         bt.postOrder();
-        System.out.println("");
+        System.out.println("Checks the next number after 3 in PostOrder:");
         System.out.println(bt.postOrderNext(10));
 
     }
