@@ -34,17 +34,18 @@ public class BT<E> {
     }
 
     public boolean add(E child, E parent) {
-       NodeBT<E> NodeChild =new NodeBT<>(child);
-        if(child==null){
+        NodeBT<E> NodeChild = new NodeBT<>(child);
+        if (child == null) {
             return false;
-        }else if(parent ==null || isEmpty()){
-            root=NodeChild;
-             return true;
-        } else if(parent!=null){
-            if(SearchNode(child) == null){
-                NodeBT<E> Np= SearchNode(parent);
-                if(Np==null|| (Np.getLeft()!=null && Np.getRight()!=null )){ return false;
-                } else if (Np.getLeft()==null){
+        } else if (parent == null || isEmpty()) {
+            root = NodeChild;
+            return true;
+        } else if (parent != null) {
+            if (SearchNode(child) == null) {
+                NodeBT<E> Np = SearchNode(parent);
+                if (Np == null || (Np.getLeft() != null && Np.getRight() != null)) {
+                    return false;
+                } else if (Np.getLeft() == null) {
                     Np.setLeft(NodeChild);
                 } else {
                     Np.setRight(NodeChild);
@@ -53,25 +54,27 @@ public class BT<E> {
             }
         }
         return false;
-    
+
     }
 
-   public NodeBT<E> SearchNode(E data){
-        if(data==null || isEmpty() ) return null;
-        return SearchNode(data,root);
-    }
-      
-    private NodeBT SearchNode(E Data,NodeBT <E> n){
-        if(n==null){ 
+    public NodeBT<E> SearchNode(E data) {
+        if (data == null || isEmpty()) {
             return null;
-        }else if(n.getData().equals(Data)){  
-            return n;
-        }else{
-            NodeBT<E> L= SearchNode(Data,n.getLeft());
-            return(L!=null)? L:SearchNode(Data,n.getRight());
-           
         }
-    
+        return SearchNode(data, root);
+    }
+
+    private NodeBT SearchNode(E Data, NodeBT<E> n) {
+        if (n == null) {
+            return null;
+        } else if (n.getData().equals(Data)) {
+            return n;
+        } else {
+            NodeBT<E> L = SearchNode(Data, n.getLeft());
+            return (L != null) ? L : SearchNode(Data, n.getRight());
+
+        }
+
     }
 
     public int countLeaves() {
@@ -148,7 +151,9 @@ public class BT<E> {
     }
 
     public NodeBT<E> preOrderNext(E element) {
-
+        if (element == null) {
+            return null;
+        }
         Stack<NodeBT<E>> openList = new Stack<>();
 
         openList.push(root);
@@ -164,14 +169,17 @@ public class BT<E> {
                 openList.push(curr.getLeft());
             }
 
-            if (curr.equals(SearchNode(element,root)) && openList.empty() == false) {
+            if (curr.equals(SearchNode(element, root)) && openList.empty() == false) {
                 return openList.pop();
             }
         }
         return null;
     }
-     public NodeBT<E> inOrderNext(E element) {
 
+    public NodeBT<E> inOrderNext(E element) {
+        if (element == null) {
+            return null;
+        }
         Stack<NodeBT<E>> openList = new Stack<>();
 
         openList.push(root);
@@ -182,44 +190,50 @@ public class BT<E> {
             if (curr.getRight() != null) {
                 openList.push(curr.getRight());
             }
-            if (curr.equals(SearchNode(element,root)) && openList.empty() == false) {
+            if (curr.equals(SearchNode(element, root)) && openList.empty() == false) {
                 return openList.pop();
             }
             if (curr.getLeft() != null) {
                 openList.push(curr.getLeft());
             }
 
-
         }
         return null;
     }
+
     public NodeBT<E> postOrderNext(E element) {
-        Stack<NodeBT<E>> s1 = new Stack<>(); 
-        Stack<NodeBT<E>>s2 = new Stack<>(); 
-  
-        if (root == null || element == root.getData()) 
-            return null; 
-  
+        if (element == null) {
+            return null;
+        }
+        Stack<NodeBT<E>> s1 = new Stack<>();
+        Stack<NodeBT<E>> s2 = new Stack<>();
+
+        if (root == null || element == root.getData()) {
+            return null;
+        }
+
         // push root to first stack 
-        s1.push(root); 
-  
+        s1.push(root);
+
         // Run while first stack is not empty 
-        while (!s1.isEmpty()) { 
+        while (!s1.isEmpty()) {
             // Pop an item from s1 and push it to s2 
-            NodeBT<E> temp = s1.pop(); 
-            s2.push(temp); 
-  
+            NodeBT<E> temp = s1.pop();
+            s2.push(temp);
+
             // Push left and right children of 
             // removed item to s1 
-            if (temp.getLeft() != null) 
-                s1.push(temp.getLeft()); 
-            if (temp.getRight() != null) 
-                s1.push(temp.getRight()); 
-        } 
-  
+            if (temp.getLeft() != null) {
+                s1.push(temp.getLeft());
+            }
+            if (temp.getRight() != null) {
+                s1.push(temp.getRight());
+            }
+        }
+
         // Print all elements of second stack 
-        while (!s2.isEmpty()) {  
-            if(s2.peek().getData() == element){
+        while (!s2.isEmpty()) {
+            if (s2.peek().getData() == element) {
                 s2.pop();
                 return s2.pop();
             }
@@ -228,6 +242,5 @@ public class BT<E> {
         }
         return null;
     }
-    
 
 }

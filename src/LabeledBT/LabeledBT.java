@@ -67,7 +67,7 @@ public class LabeledBT<E> extends BT<E> {
         }
     }
 
-    public void postOrderNumber(NodeBT<E> node, LinkedList<NodeBT<E>> l) {
+    private void postOrderNumber(NodeBT<E> node, LinkedList<NodeBT<E>> l) {
         if (node != null) {
             postOrderNumber(node.getLeft(), l);
             postOrderNumber(node.getRight(), l);
