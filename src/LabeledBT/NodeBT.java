@@ -14,9 +14,9 @@ public class NodeBT <E>{
     private E data;
     private NodeBT<E> left;
     private NodeBT<E> right;
-    private int inOrder;
-    private int preOrder;
-    private int postOrder;
+    private int inOrder; //stores position for inorder
+    private int preOrder; //stores position for preorder
+    private int postOrder; //stores position for postorder
     public NodeBT(E data){
         this.data=data;
         left=right=null;

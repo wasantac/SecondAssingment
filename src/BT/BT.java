@@ -155,17 +155,17 @@ public class BT<E> {
             return null;
         }
         LinkedList<NodeBT<E>> l = new LinkedList<>();
-        preOrderNext(root, l);
+        preOrderNext(root, l); //adds all nodes into the linkedList postOrder
         NodeBT<E> n = SearchNode(element);
         boolean nextNode = false;
         for (NodeBT<E> node : l) {
             if (nextNode == true) {
                 nextNode = false;
-                return node;
+                return node; //return if next  == true
 
             }
             if (node == n) {
-                nextNode = true;
+                nextNode = true; //checks fot the next node
             }
 
         }
@@ -185,18 +185,19 @@ public class BT<E> {
             return null;
         }
         LinkedList<NodeBT<E>> l = new LinkedList<>();
-        inOrderNext(root, l);
+        inOrderNext(root, l); //adds all nodes to the linkedlist in inOrder
         NodeBT<E> n = SearchNode(element);
+        
         boolean nextNode = false;
         for (NodeBT<E> node : l) {
             if (nextNode == true) {
                 nextNode = false;
-                return node;
-
+                return node; //returns next node
+                
             }
             if (node == n) {
                 nextNode = true;
-            }
+            } //sets nextnode to True
 
         }
         return null;
@@ -207,7 +208,7 @@ public class BT<E> {
             inOrderNext(node.getLeft(),l);
             l.add(node);
             inOrderNext(node.getRight(),l);
-        }
+        } //inOrder
     }
 
     public NodeBT<E> postOrderNext(E element) {
@@ -220,10 +221,8 @@ public class BT<E> {
         if (root == null || element == root.getData()) {
             return null;
         }
-
         // push root to first stack 
         s1.push(root);
-
         // Run while first stack is not empty 
         while (!s1.isEmpty()) {
             // Pop an item from s1 and push it to s2 
@@ -239,12 +238,11 @@ public class BT<E> {
                 s1.push(temp.getRight());
             }
         }
-
         // Print all elements of second stack 
         while (!s2.isEmpty()) {
             if (s2.peek().getData() == element) {
                 s2.pop();
-                return s2.pop();
+                return s2.pop(); //returns nextnode
             }
             s2.pop();
 

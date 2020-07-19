@@ -155,12 +155,12 @@ public class BinaryTree<E> {
     }
 
     public boolean testBST() {
-        return testBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+        return testBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE); //checks with numbers
     }
 
     private boolean testBST(NodeBT<E> node,int min,int max) {
         if(node == null) return true;
-        if ((Integer)node.getData() < min || (Integer)node.getData() > max) 
+        if ((Integer)node.getData() < min || (Integer)node.getData() > max)//checks if it can be clasified as BST
             return false; 
  
         return (testBST(node.getLeft(), min, (Integer)node.getData() - 1) &&  testBST(node.getRight(), (Integer)node.getData()+1, max)); 
